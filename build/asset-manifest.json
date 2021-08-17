@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/static/css/main.61153e6d.chunk.css",
+    "main.js": "/static/js/main.e73eac5d.chunk.js",
+    "main.js.map": "/static/js/main.e73eac5d.chunk.js.map",
+    "runtime~main.js": "/static/js/runtime~main.50142108.js",
+    "runtime~main.js.map": "/static/js/runtime~main.50142108.js.map",
+    "static/js/2.0f5333aa.chunk.js": "/static/js/2.0f5333aa.chunk.js",
+    "static/js/2.0f5333aa.chunk.js.map": "/static/js/2.0f5333aa.chunk.js.map",
+    "static/js/3.902e48c2.chunk.js": "/static/js/3.902e48c2.chunk.js",
+    "static/js/3.902e48c2.chunk.js.map": "/static/js/3.902e48c2.chunk.js.map",
+    "static/js/4.98026c78.chunk.js": "/static/js/4.98026c78.chunk.js",
+    "static/js/4.98026c78.chunk.js.map": "/static/js/4.98026c78.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.7f1371bcc0b7f60f1eaf84da25589808.js": "/precache-manifest.7f1371bcc0b7f60f1eaf84da25589808.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.61153e6d.chunk.css.map": "/static/css/main.61153e6d.chunk.css.map",
+    "static/media/icomoon.css": "/static/media/icomoon.c7a5e0e6.svg",
+    "static/media/newAIServiceBG.png": "/static/media/newAIServiceBG.3665b601.png"
+  }
+}

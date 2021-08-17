@@ -1,41 +1,11 @@
-import React from "react";
-
-//import * as Audiorecorder from './Audiorecorder';
+import React, { Fragment, useState } from "react";
 import axios from "axios";
 import Audiorecorder from "./Audiorecorder";
 import { withStyles } from "@material-ui/styles";
-
-//import Button from "react";
-//import Alert from "react";
-
-//import lookingForServiceIcon from "../../assets/images/lookingForService.svg";
-//import Header from "../common/Header";
 import Footer from "../common/Footer";
 import { useStyles } from "./styles";
-import { Fragment, useState } from "react";
 import { Button } from "@material-ui/core";
 const FileTypes = { COUGH: "COUGH", BREATH: "BREATH", VOWEL: "VOWEL" };
-//export const FileTypes = { COUGH: "COUGH", BREATH: "BREATH", VOWEL: "VOWEL" };
-//export const invokeCoughService = async () =>
-// const endpoint = "http://example-service-a.singularitynet.io:8019/coviddetection";
-// const payload = { coughUrl, vowelUrl, breathUrl };
-// try {
-//   //const response = await axios.post(endpoint, payload);
-//  // const form = new FormData();
-//   //form.append('Coughfile',Coughfile );
-//   form.append('Breathfile',Breathfile );
-//   form.append('Vowelfile',Vowelfile);
-// } catch (error) {
-//   throw new Error(error);
-// }
-
-// const handleFilerecorded = (file,FileType) => {
-//   //console.log(file);
-//   setValues({...values, [fileType]: file});
-// };
-// const handleVowelfile= file =>{
-//   handleFilerecorded(file,FileTypes.VOWEL);
-// }
 
 const RFAILanding = ({ classes }) => {
   const [values, setValues] = useState({
@@ -44,6 +14,7 @@ const RFAILanding = ({ classes }) => {
     [FileTypes.VOWEL]: undefined,
     error: undefined,
     result: undefined,
+    isProcessing: false,
   });
   const handleFilerecorded = (file, FileType) => {
     console.log(file);
@@ -66,13 +37,17 @@ const RFAILanding = ({ classes }) => {
     payload.append("breathFile", values[FileTypes.BREATH]);
     payload.append("vowelFile", values[FileTypes.VOWEL]);
     const endpoint =
-      "http://example-service-a.singularitynet.io:8019/coviddetection";
-    setValues({ ...values, error: "" });
+      "https://cough-service-api.singularitynet.io/coviddetection";
+    setValues({ ...values, error: "", isProcessing: true });
     try {
       const response = await axios.post(endpoint, payload);
-      setValues({ ...values, result: response.data });
+      setValues({ ...values, result: response.data, isProcessing: false });
     } catch (err) {
-      setValues({ ...values, error: err.toString() });
+      setValues({
+        ...values,
+        error: err.response?.data.error,
+        isProcessing: false,
+      });
     }
   };
 
@@ -102,6 +77,7 @@ const RFAILanding = ({ classes }) => {
                   variant="contained"
                   color="primary"
                   onClick={invokeCoughService}
+                  disabled={values.isProcessing}
                 >
                   Invoke
                 </Button>
